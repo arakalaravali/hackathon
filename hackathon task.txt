@@ -1,0 +1,554 @@
+// by using DOM create html elements
+
+document.body.innerHTML = `
+<div id="fetchdata">  
+</div>
+`;
+
+
+//select the element to display the results
+const displayResult = document.getElementById("fetchdata");
+
+//get data from pokemon api link by using template literal
+const getData = async () => {
+  try {
+    let pokemondata = [];
+    let result;
+    for (let id = 1; id <= 50; id++) {
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
+      result = await response.json(); 
+      let pokeAbility = result.abilities;
+      let pokeMove = result.moves;      
+      displayResult.innerHTML +=`
+    
+      <img src="${
+        result.sprites.front_default
+      }" alt="pokemon front image" /><br><br>
+
+      pokemon name:
+      ${result.name}<br><br>
+
+      Weight:  ${result.weight}<br><br>
+
+      Abilities: ${
+        pokeAbility[0] && pokeAbility[1]
+          ? `${pokeAbility[0].ability.name}, ${pokeAbility[1].ability.name} `
+          : "none"
+      }<br><br>
+      Moves: ${pokeMove[0].move.name}, ${
+        pokeMove[1].move.name
+      }<br><br>
+      
+      `
+    }
+    
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+getData();
+
+
+OUTPUT:-
+
+pokemon front image
+
+pokemon name: bulbasaur
+
+Weight: 69
+
+Abilities: overgrow, chlorophyll
+
+Moves: razor-wind, swords-dance
+
+pokemon front image
+
+pokemon name: ivysaur
+
+Weight: 130
+
+Abilities: overgrow, chlorophyll
+
+Moves: swords-dance, cut
+
+pokemon front image
+
+pokemon name: venusaur
+
+Weight: 1000
+
+Abilities: overgrow, chlorophyll
+
+Moves: swords-dance, cut
+
+pokemon front image
+
+pokemon name: charmander
+
+Weight: 85
+
+Abilities: blaze, solar-power
+
+Moves: mega-punch, fire-punch
+
+pokemon front image
+
+pokemon name: charmeleon
+
+Weight: 190
+
+Abilities: blaze, solar-power
+
+Moves: mega-punch, fire-punch
+
+pokemon front image
+
+pokemon name: charizard
+
+Weight: 905
+
+Abilities: blaze, solar-power
+
+Moves: mega-punch, fire-punch
+
+pokemon front image
+
+pokemon name: squirtle
+
+Weight: 90
+
+Abilities: torrent, rain-dish
+
+Moves: mega-punch, ice-punch
+
+pokemon front image
+
+pokemon name: wartortle
+
+Weight: 225
+
+Abilities: torrent, rain-dish
+
+Moves: mega-punch, ice-punch
+
+pokemon front image
+
+pokemon name: blastoise
+
+Weight: 855
+
+Abilities: torrent, rain-dish
+
+Moves: mega-punch, ice-punch
+
+pokemon front image
+
+pokemon name: caterpie
+
+Weight: 29
+
+Abilities: shield-dust, run-away
+
+Moves: tackle, string-shot
+
+pokemon front image
+
+pokemon name: metapod
+
+Weight: 99
+
+Abilities: none
+
+Moves: string-shot, harden
+
+pokemon front image
+
+pokemon name: butterfree
+
+Weight: 320
+
+Abilities: compound-eyes, tinted-lens
+
+Moves: razor-wind, gust
+
+pokemon front image
+
+pokemon name: weedle
+
+Weight: 32
+
+Abilities: shield-dust, run-away
+
+Moves: poison-sting, string-shot
+
+pokemon front image
+
+pokemon name: kakuna
+
+Weight: 100
+
+Abilities: none
+
+Moves: string-shot, harden
+
+pokemon front image
+
+pokemon name: beedrill
+
+Weight: 295
+
+Abilities: swarm, sniper
+
+Moves: swords-dance, cut
+
+pokemon front image
+
+pokemon name: pidgey
+
+Weight: 18
+
+Abilities: keen-eye, tangled-feet
+
+Moves: razor-wind, gust
+
+pokemon front image
+
+pokemon name: pidgeotto
+
+Weight: 300
+
+Abilities: keen-eye, tangled-feet
+
+Moves: razor-wind, gust
+
+pokemon front image
+
+pokemon name: pidgeot
+
+Weight: 395
+
+Abilities: keen-eye, tangled-feet
+
+Moves: razor-wind, gust
+
+pokemon front image
+
+pokemon name: rattata
+
+Weight: 35
+
+Abilities: run-away, guts
+
+Moves: cut, headbutt
+
+pokemon front image
+
+pokemon name: raticate
+
+Weight: 185
+
+Abilities: run-away, guts
+
+Moves: swords-dance, cut
+
+pokemon front image
+
+pokemon name: spearow
+
+Weight: 20
+
+Abilities: keen-eye, sniper
+
+Moves: razor-wind, whirlwind
+
+pokemon front image
+
+pokemon name: fearow
+
+Weight: 380
+
+Abilities: keen-eye, sniper
+
+Moves: razor-wind, whirlwind
+
+pokemon front image
+
+pokemon name: ekans
+
+Weight: 69
+
+Abilities: intimidate, shed-skin
+
+Moves: bind, slam
+
+pokemon front image
+
+pokemon name: arbok
+
+Weight: 650
+
+Abilities: intimidate, shed-skin
+
+Moves: bind, headbutt
+
+pokemon front image
+
+pokemon name: pikachu
+
+Weight: 60
+
+Abilities: static, lightning-rod
+
+Moves: mega-punch, pay-day
+
+pokemon front image
+
+pokemon name: raichu
+
+Weight: 300
+
+Abilities: static, lightning-rod
+
+Moves: mega-punch, pay-day
+
+pokemon front image
+
+pokemon name: sandshrew
+
+Weight: 120
+
+Abilities: sand-veil, sand-rush
+
+Moves: scratch, swords-dance
+
+pokemon front image
+
+pokemon name: sandslash
+
+Weight: 295
+
+Abilities: sand-veil, sand-rush
+
+Moves: scratch, swords-dance
+
+pokemon front image
+
+pokemon name: nidoran-f
+
+Weight: 70
+
+Abilities: poison-point, rivalry
+
+Moves: scratch, cut
+
+pokemon front image
+
+pokemon name: nidorina
+
+Weight: 200
+
+Abilities: poison-point, rivalry
+
+Moves: scratch, cut
+
+pokemon front image
+
+pokemon name: nidoqueen
+
+Weight: 600
+
+Abilities: poison-point, rivalry
+
+Moves: mega-punch, pay-day
+
+pokemon front image
+
+pokemon name: nidoran-m
+
+Weight: 90
+
+Abilities: poison-point, rivalry
+
+Moves: cut, double-kick
+
+pokemon front image
+
+pokemon name: nidorino
+
+Weight: 195
+
+Abilities: poison-point, rivalry
+
+Moves: cut, double-kick
+
+pokemon front image
+
+pokemon name: nidoking
+
+Weight: 620
+
+Abilities: poison-point, rivalry
+
+Moves: mega-punch, pay-day
+
+pokemon front image
+
+pokemon name: clefairy
+
+Weight: 75
+
+Abilities: cute-charm, magic-guard
+
+Moves: pound, double-slap
+
+pokemon front image
+
+pokemon name: clefable
+
+Weight: 400
+
+Abilities: cute-charm, magic-guard
+
+Moves: double-slap, mega-punch
+
+pokemon front image
+
+pokemon name: vulpix
+
+Weight: 99
+
+Abilities: flash-fire, drought
+
+Moves: headbutt, body-slam
+
+pokemon front image
+
+pokemon name: ninetales
+
+Weight: 199
+
+Abilities: flash-fire, drought
+
+Moves: headbutt, body-slam
+
+pokemon front image
+
+pokemon name: jigglypuff
+
+Weight: 55
+
+Abilities: cute-charm, competitive
+
+Moves: pound, double-slap
+
+pokemon front image
+
+pokemon name: wigglytuff
+
+Weight: 120
+
+Abilities: cute-charm, competitive
+
+Moves: double-slap, mega-punch
+
+pokemon front image
+
+pokemon name: zubat
+
+Weight: 75
+
+Abilities: inner-focus, infiltrator
+
+Moves: razor-wind, gust
+
+pokemon front image
+
+pokemon name: golbat
+
+Weight: 550
+
+Abilities: inner-focus, infiltrator
+
+Moves: razor-wind, wing-attack
+
+pokemon front image
+
+pokemon name: oddish
+
+Weight: 54
+
+Abilities: chlorophyll, run-away
+
+Moves: swords-dance, cut
+
+pokemon front image
+
+pokemon name: gloom
+
+Weight: 86
+
+Abilities: chlorophyll, stench
+
+Moves: swords-dance, cut
+
+pokemon front image
+
+pokemon name: vileplume
+
+Weight: 186
+
+Abilities: chlorophyll, effect-spore
+
+Moves: swords-dance, cut
+
+pokemon front image
+
+pokemon name: paras
+
+Weight: 54
+
+Abilities: effect-spore, dry-skin
+
+Moves: scratch, swords-dance
+
+pokemon front image
+
+pokemon name: parasect
+
+Weight: 295
+
+Abilities: effect-spore, dry-skin
+
+Moves: scratch, swords-dance
+
+pokemon front image
+
+pokemon name: venonat
+
+Weight: 300
+
+Abilities: compound-eyes, tinted-lens
+
+Moves: tackle, take-down
+
+pokemon front image
+
+pokemon name: venomoth
+
+Weight: 125
+
+Abilities: shield-dust, tinted-lens
+
+Moves: razor-wind, gust
+
+pokemon front image
+
+pokemon name: diglett
+
+Weight: 8
+
+Abilities: sand-veil, arena-trap
+
+Moves: scratch, cut
+
